@@ -1,0 +1,50 @@
+[
+    {
+        "_id": 1,
+        "name": "Gigabyte m250",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores",
+        "minOrder": 100,
+        "quantity": 1500,
+        "price": 150
+    },
+    {
+        "_id": 2,
+        "name": "Gigabyte m250",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores",
+        "minOrder": 100,
+        "quantity": 1500,
+        "price": 150
+    },
+    {
+        "_id": 3,
+        "name": "Gigabyte m250",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores",
+        "minOrder": 100,
+        "quantity": 1500,
+        "price": 150
+    },
+    {
+        "_id": 4,
+        "name": "Gigabyte m250",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores",
+        "minOrder": 100,
+        "quantity": 1500,
+        "price": 150
+    },
+    {
+        "_id": 5,
+        "name": "Gigabyte m250",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores",
+        "minOrder": 100,
+        "quantity": 1500,
+        "price": 150
+    },
+    {
+        "_id": 6,
+        "name": "Gigabyte m250",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores",
+        "minOrder": 100,
+        "quantity": 1500,
+        "price": 150
+    }
+]
