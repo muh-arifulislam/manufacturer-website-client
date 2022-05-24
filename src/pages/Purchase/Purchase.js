@@ -5,6 +5,8 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { format } from 'date-fns';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const axios = require('axios').default;
 const Purchase = () => {
     const date = new Date();
@@ -59,6 +61,7 @@ const Purchase = () => {
             .then(function (response) {
                 // handle success
                 console.log(response);
+
             })
             .catch(function (error) {
                 // handle error
