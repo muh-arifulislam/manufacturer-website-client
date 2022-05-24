@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../shared/Loading';
 import SocialLogin from './SocialLogin';
@@ -14,9 +14,13 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const navigate = useNavigate();
-    if (user || gUser) {
-        navigate('/')
-    }
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+    useEffect(() => {
+        if (user || gUser) {
+            navigate(from, { replace: true });
+        }
+    }, [user, gUser])
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const handleLogin = (event) => {
@@ -31,9 +35,6 @@ const Login = () => {
     }
     const handleFacebookLogin = () => {
         console.log('facebook login')
-    }
-    if (loading || gLoading) {
-        return <Loading></Loading>
     }
     return (
         <div className="hero min-h-screen bg-base-200">
