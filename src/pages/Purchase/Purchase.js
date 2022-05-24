@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { format } from 'date-fns';
+const axios = require('axios').default;
 const Purchase = () => {
     const date = new Date();
     const formattedDate = format(date, 'PP');
@@ -25,9 +26,14 @@ const Purchase = () => {
             })
 
     }, []);
+    useEffect(() => {
+        setOrderQuantity(minOrder?.toString())
+    }, [tool])
     const handleQuantityPlus = () => {
         const newQuantity = parseInt(orderQuantity) + 1;
-        setOrderQuantity(`${newQuantity}`);
+        if (newQuantity <= quantity) {
+            setOrderQuantity(`${newQuantity}`);
+        }
     }
     const handleQuantityMinus = () => {
         const newQuantity = parseInt(orderQuantity) - 1;
@@ -35,15 +41,29 @@ const Purchase = () => {
             setOrderQuantity(`${newQuantity}`);
         }
     }
+    const addressRef = useRef('');
     const handleOrder = () => {
+        const totalPrice = parseInt(price) * parseInt(orderQuantity);
         const data = {
             _id: _id,
             name: name,
             orderQuantity: orderQuantity,
             email: user.email,
-            date: formattedDate
+            date: formattedDate,
+            address: addressRef.current.value,
+            totalPrice: totalPrice,
+            customerName: user?.displayName,
+            isPaid: false
         }
-        console.log(data)
+        axios.put('http://localhost:5000/order', data)
+            .then(function (response) {
+                // handle success
+                console.log(response);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
     }
     return (
         <div>
@@ -61,13 +81,18 @@ const Purchase = () => {
                                 </button>
                             </div>
                             <div>
+                                <input type="text" placeholder="name" className="input input-bordered mt-[12px] w-full max-w-xs" value={user?.displayName} readOnly />
+                                <input type="text" placeholder="email" className="input input-bordered mt-[12px] w-full max-w-xs" value={user?.email} readOnly />
+                                <textarea ref={addressRef} className="textarea textarea-bordered mt-[12px] w-full max-w-xs" placeholder="address"></textarea>
+                            </div>
+                            <div>
                                 {
                                     orderQuantity < minOrder &&
                                     <p className='text-center'><small>You have to order minimum {minOrder} item**</small></p>
                                 }
                             </div>
                             <div className="form-control mt-6">
-                                <button onClick={handleOrder} className="btn btn-primary" disabled={orderQuantity < minOrder || orderQuantity > quantity}>Add Order</button>
+                                <button onClick={handleOrder} className="btn btn-primary" disabled={orderQuantity < minOrder || orderQuantity > quantity}>Place Order</button>
                             </div>
                         </div>
                     </div>
