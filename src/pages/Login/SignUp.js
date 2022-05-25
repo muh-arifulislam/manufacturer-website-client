@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import SocialLogin from './SocialLogin';
-
+import { useForm } from "react-hook-form";
+import useToken from '../../hooks/useToken';
 const SignUp = () => {
     const [
         createUserWithEmailAndPassword,
@@ -11,30 +12,34 @@ const SignUp = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+    const [updateProfile, updating, updateProfileError] = useUpdateProfile(auth);
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [error1, setError1] = useState('');
+    const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
-    const nameRef = useRef('');
-    const emailRef = useRef('');
-    const passwordRef = useRef('');
-    const confirmPasswordRef = useRef('');
-    if (user || gUser) {
+    const token = useToken(user || gUser);
+    if (token) {
         navigate('/')
     }
-    const handleSignUp = (event) => {
-        event.preventDefault();
-        const name = nameRef.current.value;
-        const email = emailRef.current.value;
-        const password = passwordRef.current.value;
-        const confirmPassword = confirmPasswordRef.current.value;
-        const passRex = /^(?=.*\p{Ll})(?=.*\p{Lu})(?=.*[\d|@#$!%*?&])[\p{L}\d@#$!%*?&]{8,96}$/gmu
-        if (!passRex.test(password)) {
+    const onSubmit = async (data) => {
+        console.log(data)
+        const { email, displayName, password, confirmPassword } = data;
+        const passValidate = /^(?=.*\p{Ll})(?=.*\p{Lu})(?=.*[\d|@#$!%*?&])[\p{L}\d@#$!%*?&]{8,96}$/gmu
+        if (passValidate.test(password)) {
             setError1('You should add minimum 1 uppercase, 1 lowercase, 1 digit and password must be minimum 8 character')
         }
         else {
-            console.log('hoy nai')
+            if (password !== confirmPassword) {
+                setError1('Your password and confirm password did not matched!!')
+            }
+            else {
+                await createUserWithEmailAndPassword(email, password);
+                await updateProfile({ displayName });
+
+
+            }
         }
-    }
+    };
     const handleGoogleLogin = () => {
         signInWithGoogle();
     }
@@ -46,35 +51,38 @@ const SignUp = () => {
             <div className="hero-content w-full">
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
-                        <form onSubmit={handleSignUp}>
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
                                 </label>
-                                <input ref={nameRef} type="email" placeholder="name" className="input input-bordered" />
+                                <input type="text" {...register("displayName")} placeholder="name" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input ref={emailRef} type="email" placeholder="email" className="input input-bordered" />
+                                <input {...register("email")} type="email" placeholder="email" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input ref={passwordRef} type="password" placeholder="password" className="input input-bordered" required />
+                                <input {...register("password")} type="password" placeholder="password" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Confirm Password</span>
                                 </label>
-                                <input ref={confirmPasswordRef} type="password" placeholder="confirm password" className="input input-bordered" required />
+                                <input {...register("confirmPassword")} type="password" placeholder="confirm password" className="input input-bordered" required />
                             </div>
                             <div>
                                 <p>Already Registerd    ? <Link to='/login' className='text-primary' >Login</Link></p>
                                 {
                                     error1 && <p className='text-center mt-[10px] text-red-600'><small >{error1}</small></p>
+                                }
+                                {
+                                    error && <p className='text-center mt-[10px] text-red-600'><small >{error.message}</small></p>
                                 }
                             </div>
                             <div className="form-control mt-6">

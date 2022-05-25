@@ -12,6 +12,7 @@ const Purchase = () => {
     const date = new Date();
     const formattedDate = format(date, 'PP');
     const [user] = useAuthState(auth);
+    console.log(user);
     const [tool, setTool] = useState({});
     const { _id, name, price, quantity, minOrder, description } = tool;
     const [orderQuantity, setOrderQuantity] = useState('0');
@@ -94,6 +95,9 @@ const Purchase = () => {
                                 {
                                     orderQuantity < minOrder &&
                                     <p className='text-center'><small>You have to order minimum {minOrder} item**</small></p>
+                                }
+                                {
+                                    orderQuantity > quantity && <p className='text-center text-red-500'><small>You can can't buy items more then available quantity**</small></p>
                                 }
                             </div>
                             <div className="form-control mt-6">

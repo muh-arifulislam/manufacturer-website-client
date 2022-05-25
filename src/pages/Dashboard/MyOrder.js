@@ -7,11 +7,26 @@ import {
     useQuery
 } from 'react-query';
 import Loading from '../shared/Loading';
+import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 const axios = require('axios').default;
 const MyOrder = () => {
     const [user] = useAuthState(auth);
-    const { data: items, isLoading, refetch } = useQuery('order', () => fetch('http://localhost:5000/order?email=arifibnenam@gmail.com')
-        .then(res => res.json()))
+    const navigate = useNavigate();
+    const { data: items, isLoading, refetch } = useQuery('order', () => fetch(`http://localhost:5000/order?email=${user.email}`, {
+        method: "GET",
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    })
+        .then(async (res) => {
+            if (res.status === 403 || res.status === 401) {
+                localStorage.removeItem('accessToken');
+                await signOut(auth);
+                navigate('/login');
+            }
+            return res.json();
+        }))
     const [removingItemId, setRemovingItemId] = useState('');
     const handleRemoveItem = () => {
         axios.delete(`http://localhost:5000/order/${removingItemId}`)
@@ -47,7 +62,7 @@ const MyOrder = () => {
                     </thead>
                     <tbody>
                         {
-                            items.map(item => <OrderTableRow key={item._id} item={item} setRemovingItemId={setRemovingItemId}></OrderTableRow>)
+                            items?.map(item => <OrderTableRow key={item._id} item={item} setRemovingItemId={setRemovingItemId}></OrderTableRow>)
                         }
                     </tbody>
                 </table>

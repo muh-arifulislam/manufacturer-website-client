@@ -22,7 +22,10 @@ const Header = () => {
                     {
                         user ? <>
                             <li><Link to='dashboard'>Dashboard</Link></li>
-                            <button onClick={() => signOut(auth)} className='btn text-white'>Sign Out</button>
+                            <button onClick={() => {
+                                localStorage.removeItem('accessToken');
+                                signOut(auth);
+                            }} className='btn text-white'>Sign Out</button>
                         </> : <>
                             {
                                 (path === "/login") ? <Link to='/signup'><button className='btn text-white'>Sign Up</button></Link> :

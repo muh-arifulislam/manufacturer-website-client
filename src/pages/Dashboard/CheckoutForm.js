@@ -55,6 +55,7 @@ const CheckoutForm = ({ order }) => {
         else {
             setCardError('');
             alert('Congrates! your payment is completed');
+            // update order 
             fetch(`http://localhost:5000/update-order/`, {
                 method: "PUT",
                 headers: {
@@ -66,17 +67,18 @@ const CheckoutForm = ({ order }) => {
                 .then(data => {
                     console.log(data)
                 })
-            // fetch(`http://localhost:5000/update-tool/`, {
-            //     method: "PUT",
-            //     headers: {
-            //         'content-type': 'application/json'
-            //     },
-            //     body: JSON.stringify({ id, orderQuantity })
-            // })
-            //     .then(res => res.json())
-            //     .then(data => {
-            //         console.log(data)
-            //     })
+            // update tools 
+            fetch(`http://localhost:5000/update-tool/`, {
+                method: "PUT",
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ id, orderQuantity })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                })
 
         }
 
