@@ -55,7 +55,9 @@ const Purchase = () => {
             address: addressRef.current.value,
             totalPrice: totalPrice,
             customerName: user?.displayName,
-            isPaid: false
+            isPaid: false,
+            transitionId: "",
+            status: '',
         }
         axios.put('http://localhost:5000/order', data)
             .then(function (response) {

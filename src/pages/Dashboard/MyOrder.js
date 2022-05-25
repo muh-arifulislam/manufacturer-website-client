@@ -10,20 +10,8 @@ import Loading from '../shared/Loading';
 const axios = require('axios').default;
 const MyOrder = () => {
     const [user] = useAuthState(auth);
-    // const [items, setItems] = useState([]);
-    const { data: items, isLoading, refetch } = useQuery('order', () => fetch('http://localhost:5000/order/arifibnenam@gmail.com')
+    const { data: items, isLoading, refetch } = useQuery('order', () => fetch('http://localhost:5000/order?email=arifibnenam@gmail.com')
         .then(res => res.json()))
-    // useEffect(() => {
-    //     axios.get(`http://localhost:5000/order/arifibnenam@gmail.com`)
-    //         .then(function (response) {
-    //             // handle success
-    //             setItems(response.data);
-    //         })
-    //         .catch(function (error) {
-    //             // handle error
-    //             console.log(error);
-    //         })
-    // }, [])
     const [removingItemId, setRemovingItemId] = useState('');
     const handleRemoveItem = () => {
         axios.delete(`http://localhost:5000/order/${removingItemId}`)
@@ -52,6 +40,7 @@ const MyOrder = () => {
                             <th>Date</th>
                             <th>Quantity</th>
                             <th>Amount</th>
+                            <th>Transition ID</th>
                             <th></th>
                             <th></th>
                         </tr>

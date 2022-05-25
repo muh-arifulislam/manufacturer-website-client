@@ -1,21 +1,22 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const OrderTableRow = ({ item, setRemovingItemId }) => {
-    const { name, _id, date, isPaid, orderQuantity } = item.data;
+    const { name, _id, date, isPaid, orderQuantity, transitionId, totalPrice } = item;
     const { id } = item;
+    const navigate = useNavigate();
     return (
         <tr>
             <th>1</th>
             <td>{name}</td>
             <td>May 20, 2022</td>
             <td>{orderQuantity}</td>
-            <td>$18200</td>
+            <td>${totalPrice}</td>
+            <td>{transitionId}</td>
             <td>
                 {
-                    isPaid ? <button className="btn btn-sm px-[20px]">Paid</button> :
-                        <div className="tooltip" data-tip="Click to payment process">
-                            <button className="btn btn-sm">unpaid</button>
-                        </div>
+                    !isPaid ? <button onClick={() => navigate(`payment/${_id}`)} className="btn btn-sm">Payment</button> :
+                        <button className="btn btn-sm px-[27px]">paid</button>
                 }
             </td>
             <td>
