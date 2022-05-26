@@ -29,7 +29,7 @@ const MyOrder = () => {
         }))
     const [removingItemId, setRemovingItemId] = useState('');
     const handleRemoveItem = () => {
-        axios.delete(`http://localhost:5000/order/${removingItemId}`)
+        axios.delete(`http://localhost:5000/order/${removingItemId}?email=${user.email}`, { headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` } })
             .then(function (response) {
                 // handle success
                 console.log(response);
@@ -37,7 +37,7 @@ const MyOrder = () => {
             })
             .catch(function (error) {
                 // handle error
-                console.log(error);
+                console.log(error.message, 'hei');
             })
     }
     if (isLoading) {
