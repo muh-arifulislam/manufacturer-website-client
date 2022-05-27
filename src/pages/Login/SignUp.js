@@ -5,6 +5,7 @@ import auth from '../../firebase.init';
 import SocialLogin from './SocialLogin';
 import { useForm } from "react-hook-form";
 import useToken from '../../hooks/useToken';
+import Loading from '../shared/Loading';
 const SignUp = () => {
     const [
         createUserWithEmailAndPassword,

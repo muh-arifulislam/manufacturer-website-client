@@ -8,7 +8,7 @@ const ConfirmModal = ({ children }) => {
                 <div className="modal-box">
                     <h3 className="font-bold text-lg text-center">Are you sure?</h3>
                     <div className="modal-action flex justify-center">
-                        <label onClick={children} htmlFor="confirm-modal" className="btn btn-error">Delete</label>
+                        <label onClick={children} htmlFor="confirm-modal" className="btn btn-error">Yes</label>
                         <label htmlFor="confirm-modal" className="btn">close</label>
                     </div>
                 </div>
