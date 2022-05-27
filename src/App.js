@@ -10,7 +10,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import MyOrder from './pages/Dashboard/MyOrder';
 import MyReview from './pages/Dashboard/MyReview';
 import MyProfile from './pages/Dashboard/MyProfile';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Payment from './pages/Dashboard/Payment';
 import Blogs from './pages/Blogs/Blogs';
@@ -53,6 +53,7 @@ function App() {
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 }
