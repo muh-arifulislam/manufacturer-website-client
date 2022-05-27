@@ -17,6 +17,10 @@ import Blogs from './pages/Blogs/Blogs';
 import MyPortfolio from './pages/MyPortfolio/MyPortfolio';
 import NotFound from './pages/NotFound/NotFound';
 import Footer from './pages/shared/Footer/Footer';
+import ManageOrder from './pages/Dashboard/ManageOrder';
+import AddProduct from './pages/Dashboard/AddProduct';
+import MakeAdmin from './pages/Dashboard/MakeAdmin';
+import ManageProducts from './pages/Dashboard/ManageProducts';
 function App() {
   return (
     <div>
@@ -40,6 +44,10 @@ function App() {
           <Route path='review' element={<MyReview></MyReview>}></Route>
           <Route path='my-profile' element={<MyProfile></MyProfile>}></Route>
           <Route path='payment/:id' element={<Payment></Payment>}></Route>
+          <Route path='manage-orders' element={<ManageOrder></ManageOrder>}></Route>
+          <Route path='add-product' element={<AddProduct></AddProduct>}></Route>
+          <Route path='make-admin' element={<MakeAdmin></MakeAdmin>}></Route>
+          <Route path='manage-products' element={<ManageProducts></ManageProducts>}></Route>
         </Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>

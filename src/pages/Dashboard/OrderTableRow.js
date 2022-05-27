@@ -20,7 +20,7 @@ const OrderTableRow = ({ item, setRemovingItemId }) => {
                 }
             </td>
             <td>
-                <label onClick={() => setRemovingItemId(id)} htmlFor="confirm-modal" className="btn btn-sm btn-error text-white modal-button" disabled={isPaid}>remove</label>
+                <label onClick={() => setRemovingItemId(_id)} htmlFor="confirm-modal" className="btn btn-sm btn-error text-white modal-button" disabled={isPaid}>remove</label>
             </td>
         </tr>
     );

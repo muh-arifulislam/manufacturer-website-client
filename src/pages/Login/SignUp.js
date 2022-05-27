@@ -25,7 +25,7 @@ const SignUp = () => {
         console.log(data)
         const { email, displayName, password, confirmPassword } = data;
         const passValidate = /^(?=.*\p{Ll})(?=.*\p{Lu})(?=.*[\d|@#$!%*?&])[\p{L}\d@#$!%*?&]{8,96}$/gmu
-        if (passValidate.test(password)) {
+        if (!passValidate.test(password)) {
             setError1('You should add minimum 1 uppercase, 1 lowercase, 1 digit and password must be minimum 8 character')
         }
         else {

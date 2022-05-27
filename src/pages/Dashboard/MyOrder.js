@@ -67,7 +67,7 @@ const MyOrder = () => {
                     </tbody>
                 </table>
             </div>
-            <ConfirmModal handleRemoveItem={handleRemoveItem}></ConfirmModal>
+            <ConfirmModal>{handleRemoveItem}</ConfirmModal>
         </section>
     );
 };
