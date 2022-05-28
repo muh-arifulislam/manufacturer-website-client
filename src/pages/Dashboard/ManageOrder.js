@@ -6,6 +6,7 @@ import {
 import auth from '../../firebase.init';
 import Loading from '../shared/Loading';
 import ConfirmModal from './ConfirmModal';
+import { toast } from 'react-toastify';
 const axios = require('axios').default;
 const ManageOrder = () => {
     const [user] = useAuthState(auth);
@@ -23,12 +24,36 @@ const ManageOrder = () => {
             // }
             return res.json();
         }))
-    const [removingItemId, setRemovingItemId] = useState('');
+    const [selectedOrderId, setselectedOrderId] = useState('');
     const handleCancelOrder = () => {
-        axios.delete(`http://localhost:5000/order/${removingItemId}?email=${user.email}`, { headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` } })
+        axios.delete(`http://localhost:5000/order/${selectedOrderId}?email=${user.email}`, { headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` } })
             .then(function (response) {
                 // handle success
-                console.log(response);
+                toast.success("Order deleted successfully")
+                refetch();
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error.message, 'hei');
+            })
+    }
+    const handleDeliverOrder = (id) => {
+        axios.put(`http://localhost:5000/order/${id}?email=${user.email}`, { operation: "deliver" }, { headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` } })
+            .then(function (response) {
+                // handle success
+                toast.success("Order deliver successfull")
+                refetch();
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error.message, 'hei');
+            })
+    }
+    const handlePayOrder = (id) => {
+        axios.put(`http://localhost:5000/order/${id}?email=${user.email}`, { operation: "payment" }, { headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` } })
+            .then(function (response) {
+                // handle success
+                toast.success("Order payment successfull")
                 refetch();
             })
             .catch(function (error) {
@@ -65,13 +90,13 @@ const ManageOrder = () => {
                                 }
                             </td>
                             <td>
-                                <button className="btn btn-sm">Deliver</button>
+                                <label onClick={() => handleDeliverOrder(order._id)} className="btn btn-sm" disabled={order.status === "delivered"}>Deliver</label>
                             </td>
                             <td>
-                                <button className="btn btn-sm">Pay</button>
+                                <label onClick={() => handlePayOrder(order._id)} className="btn btn-sm" disabled={order.isPaid}>Pay</label>
                             </td>
                             <td>
-                                <label onClick={() => setRemovingItemId(order._id)} htmlFor="confirm-modal" className="btn btn-sm" disabled={order.status}>Cancel</label>
+                                <label onClick={() => setselectedOrderId(order._id)} htmlFor="confirm-modal" className="btn btn-sm" disabled={order.status}>Cancel</label>
                             </td>
                         </tr>)
                     }

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../shared/Loading';
@@ -8,12 +8,24 @@ import {
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import ReviewCard from './ReviewCard';
+import { toast } from 'react-toastify';
 const MyReview = () => {
     const [user, loading] = useAuthState(auth);
+    const [userData, setuserData] = useState({});
     const navigate = useNavigate();
     const titleRef = useRef('');
     const descriptionRef = useRef('');
     const [rating, setRating] = useState(2);
+    useEffect(() => {
+        fetch(`http://localhost:5000/user/${user.email}`, {
+            method: "GET",
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setuserData(data))
+    }, [user])
     const { data: reviews, isLoading, refetch } = useQuery('reviews', () => fetch(`http://localhost:5000/review?email=${user.email}`, {
         method: "GET",
         headers: {
@@ -31,7 +43,7 @@ const MyReview = () => {
     const handleAddReview = () => {
         const title = titleRef.current.value;
         const description = descriptionRef.current.value;
-        const data = { name: user?.displayName, email: user?.email, title: title, description: description, rating: rating }
+        const data = { name: user?.displayName, email: user?.email, title: title, description: description, rating: rating, image: userData?.image }
         fetch('http://localhost:5000/review', {
             method: "POST",
             headers: {
@@ -43,6 +55,7 @@ const MyReview = () => {
             .then(data => {
                 if (data.acknowledged) {
                     refetch();
+                    toast.success("your review posted done!")
                 }
             })
     }

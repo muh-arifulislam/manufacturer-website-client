@@ -50,37 +50,38 @@ const AddProduct = () => {
     };
     return (
         <section className='flex justify-center'>
-            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+            <div className="card flex-shrink-0 w-full lg:max-w-xl max-w-xs shadow-2xl bg-base-100">
                 <div className="card-body">
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <h2 className="text-3xl font-bold text-center">Add Product</h2>
+                    <form onSubmit={handleSubmit(onSubmit)} className="mt-[12px]">
                         <div className="form-control">
                             <input {...register("name")} type="text" placeholder="product name" className="input input-bordered" required />
                         </div>
-                        <div className="form-control">
+                        <div className="form-control mt-[12px]">
                             <input {...register("price")} type="text" placeholder="product price" className="input input-bordered" required />
                         </div>
-                        <div className="form-control">
+                        <div className="form-control mt-[12px]">
                             <input {...register("quantity")} type="text" placeholder="avaiable quantity" className="input input-bordered" required />
                         </div>
-                        <div className="form-control">
+                        <div className="form-control mt-[12px]">
                             <input {...register("minOrder")} type="text" placeholder="minimum order quantity" className="input input-bordered" required />
                         </div>
-                        <div className="form-control">
+                        <div className="form-control mt-[12px]">
                             <textarea {...register("description")} className="textarea textarea-bordered" placeholder="product description" required></textarea>
                         </div>
-                        <div className="form-control">
+                        <div className="form-control mt-[12px]">
                             <input
                                 type="file"
-                                className="input input-bordered w-full max-w-xs"
+                                className="input input-bordered w-full max-w-xl"
                                 {...register("image", {
                                     required: {
                                         value: true,
                                         message: 'Image is Required'
                                     }
                                 })}
-                            />
+                                required />
                         </div>
-                        <div className="form-control mt-6">
+                        <div className="form-control  mt-[12px]">
                             <input className="btn btn-primary" type="submit" value="Add Product" />
                         </div>
                     </form>

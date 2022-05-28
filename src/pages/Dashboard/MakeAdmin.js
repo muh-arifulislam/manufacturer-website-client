@@ -54,7 +54,7 @@ const MakeAdmin = () => {
                 <tbody>
                     {
                         users.map(user => <tr key={user._id}>
-                            <th>1</th>
+                            <th>{users.indexOf(user) + 1}</th>
                             <td>{user.name}</td>
                             <td>{user.email}</td>
                             <td>
