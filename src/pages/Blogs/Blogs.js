@@ -57,6 +57,15 @@ const Blogs = () => {
                 </div>
             </div>
             {/* fourth question answer */}
+            <div class="card w-full bg-base-100 shadow-xl lg:mt-[50px] mt-[30px]">
+                <div class="card-body">
+                    <h2 class="card-title"> Why do not set the state directly in React?</h2>
+                    <p >
+                        The useState hook returns a stateful value, and a functioin to update it. We can't set value on stateful variable. When we try to do it only the new value set on the state. Previous state value are vanished. Here's somethings happend under the hood. During the initial rendering. that state value is same as the value pass on hook argument. That's why when we trying to set a new value if become empty or as initialsate. Therefore, only the new value set on the state. The solution of this problem is use state update function which given by the hook
+                    </p>
+                </div>
+            </div>
+            {/* fifth question answer */}
             <div class="card w-full bg-base-100 shadow-xl lg:my-[50px] my-[30px] ">
                 <div class="card-body">
                     <h2 class="card-title"> What is a unit test? Why should write unit tests?</h2>
