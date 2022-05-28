@@ -5,9 +5,9 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { format } from 'date-fns';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 const axios = require('axios').default;
+
 const Purchase = () => {
     const date = new Date();
     const formattedDate = format(date, 'PP');
@@ -21,7 +21,7 @@ const Purchase = () => {
     }
     const { id } = useParams();
     useEffect(() => {
-        fetch('http://localhost:5000/tool')
+        fetch('https://polar-gorge-51199.herokuapp.com/tool')
             .then(res => res.json())
             .then(data => {
                 const findedItem = data.find(item => item._id == id);
@@ -60,11 +60,11 @@ const Purchase = () => {
             transitionId: "",
             status: '',
         }
-        axios.put('http://localhost:5000/order', data)
+        axios.put('https://polar-gorge-51199.herokuapp.com/order', data)
             .then(function (response) {
                 // handle success
                 console.log(response);
-
+                toast.success("your order successful")
             })
             .catch(function (error) {
                 // handle error

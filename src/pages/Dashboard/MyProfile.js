@@ -24,7 +24,7 @@ const MyProfile = () => {
     const [city, setCity] = useState('');
     const [zip, setZip] = useState('');
     const [country, setCountry] = useState('');
-    const { data: userData, isLoading, refetch } = useQuery('user', () => fetch(`http://localhost:5000/user/${user.email}`, {
+    const { data: userData, isLoading, refetch } = useQuery('user', () => fetch(`https://polar-gorge-51199.herokuapp.com/user/${user.email}`, {
         method: "GET",
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -59,7 +59,7 @@ const MyProfile = () => {
     }, [userData, user])
     const handleSubmit = () => {
         const data = { fullName, email, linkedIn, institute, educationFromYear, educationToYear, number, city, zip, country };
-        axios.put('http://localhost:5000/user', data, {
+        axios.put('https://polar-gorge-51199.herokuapp.com/user', data, {
             headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` }
         })
             .then(function (response) {
@@ -87,7 +87,7 @@ const MyProfile = () => {
                 console.log(result)
                 if (result.success) {
                     const image = result.data.url;
-                    fetch(`http://localhost:5000/user/image/${userData._id}?email=${user.email}`, {
+                    fetch(`https://polar-gorge-51199.herokuapp.com/user/image/${userData._id}?email=${user.email}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json',

@@ -8,7 +8,7 @@ const Dashboard = () => {
     const [userData, setUserData] = useState('');
     useEffect(() => {
         if (user) {
-            axios.get(`http://localhost:5000/user/${user.email}`, {
+            axios.get(`https://polar-gorge-51199.herokuapp.com/user/${user.email}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -30,7 +30,7 @@ const Dashboard = () => {
                 {/* <!-- Page content here --> */}
                 <Outlet></Outlet>
                 <div className='fixed top-[50%]'>
-                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden ">Open drawer</label>
+                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden z-50">Open drawer</label>
                 </div>
             </div>
             <div className="drawer-side ">

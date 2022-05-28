@@ -17,7 +17,7 @@ const MyReview = () => {
     const descriptionRef = useRef('');
     const [rating, setRating] = useState(2);
     useEffect(() => {
-        fetch(`http://localhost:5000/user/${user.email}`, {
+        fetch(`https://polar-gorge-51199.herokuapp.com/user/${user.email}`, {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -26,7 +26,7 @@ const MyReview = () => {
             .then(res => res.json())
             .then(data => setuserData(data))
     }, [user])
-    const { data: reviews, isLoading, refetch } = useQuery('reviews', () => fetch(`http://localhost:5000/review?email=${user.email}`, {
+    const { data: reviews, isLoading, refetch } = useQuery('reviews', () => fetch(`https://polar-gorge-51199.herokuapp.com/review?email=${user.email}`, {
         method: "GET",
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -43,7 +43,7 @@ const MyReview = () => {
     const handleAddReview = () => {
         const description = descriptionRef.current.value;
         const data = { name: user?.displayName, email: user?.email, description: description, rating: rating, image: userData?.image }
-        fetch('http://localhost:5000/review', {
+        fetch('https://polar-gorge-51199.herokuapp.com/review', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

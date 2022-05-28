@@ -13,7 +13,7 @@ const axios = require('axios').default;
 const MyOrder = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
-    const { data: items, isLoading, refetch } = useQuery('order', () => fetch(`http://localhost:5000/order?email=${user.email}`, {
+    const { data: items, isLoading, refetch } = useQuery('order', () => fetch(`https://polar-gorge-51199.herokuapp.com/order?email=${user.email}`, {
         method: "GET",
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -29,7 +29,7 @@ const MyOrder = () => {
         }))
     const [removingItemId, setRemovingItemId] = useState('');
     const handleRemoveItem = () => {
-        axios.delete(`http://localhost:5000/order/${removingItemId}?email=${user.email}`, { headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` } })
+        axios.delete(`https://polar-gorge-51199.herokuapp.com/order/${removingItemId}?email=${user.email}`, { headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` } })
             .then(function (response) {
                 // handle success
                 console.log(response);

@@ -9,7 +9,7 @@ const CheckoutForm = ({ order }) => {
     const { customerName, totalPrice, name, id, _id, orderQuantity, email } = order;
     useEffect(() => {
         if (totalPrice) {
-            fetch('http://localhost:5000/create-payment-intent', {
+            fetch('https://polar-gorge-51199.herokuapp.com/create-payment-intent', {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'
@@ -57,7 +57,7 @@ const CheckoutForm = ({ order }) => {
             setCardError('');
             toast.success("Your Payment has been successful");
             // update order 
-            fetch(`http://localhost:5000/update-order/`, {
+            fetch(`https://polar-gorge-51199.herokuapp.com/update-order/`, {
                 method: "PUT",
                 headers: {
                     'content-type': 'application/json'
@@ -69,7 +69,7 @@ const CheckoutForm = ({ order }) => {
 
                 })
             // update tools 
-            fetch(`http://localhost:5000/update-tool/`, {
+            fetch(`https://polar-gorge-51199.herokuapp.com/update-tool/`, {
                 method: "PUT",
                 headers: {
                     'content-type': 'application/json'

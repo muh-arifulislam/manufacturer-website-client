@@ -7,7 +7,7 @@ import {
 } from 'react-query';
 import Loading from '../shared/Loading';
 const HomeReviews = () => {
-    const { data: reviews, isLoading, refetch } = useQuery('all-reviews', () => fetch(`http://localhost:5000/reviews`)
+    const { data: reviews, isLoading, refetch } = useQuery('all-reviews', () => fetch(`https://polar-gorge-51199.herokuapp.com/reviews`)
         .then(async (res) => {
             return res.json();
         }))

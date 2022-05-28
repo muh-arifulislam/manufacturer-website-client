@@ -15,7 +15,7 @@ const Payment = () => {
     const [order, setOrder] = useState({});
     const { name, totalPrice } = order;
     useEffect(() => {
-        axios.get(`http://localhost:5000/order/${id}`)
+        axios.get(`https://polar-gorge-51199.herokuapp.com/order/${id}`)
             .then(function (response) {
                 // handle success
                 console.log(response);

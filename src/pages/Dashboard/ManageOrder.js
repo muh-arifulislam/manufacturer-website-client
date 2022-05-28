@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 const axios = require('axios').default;
 const ManageOrder = () => {
     const [user] = useAuthState(auth);
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`http://localhost:5000/order?email=${user.email}`, {
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`https://polar-gorge-51199.herokuapp.com/order?email=${user.email}`, {
         method: "GET",
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -26,7 +26,7 @@ const ManageOrder = () => {
         }))
     const [selectedOrderId, setselectedOrderId] = useState('');
     const handleCancelOrder = () => {
-        axios.delete(`http://localhost:5000/order/${selectedOrderId}?email=${user.email}`, { headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` } })
+        axios.delete(`https://polar-gorge-51199.herokuapp.com/order/${selectedOrderId}?email=${user.email}`, { headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` } })
             .then(function (response) {
                 // handle success
                 toast.success("Order deleted successfully")
@@ -38,7 +38,7 @@ const ManageOrder = () => {
             })
     }
     const handleDeliverOrder = (id) => {
-        axios.put(`http://localhost:5000/order/${id}?email=${user.email}`, { operation: "deliver" }, { headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` } })
+        axios.put(`https://polar-gorge-51199.herokuapp.com/order/${id}?email=${user.email}`, { operation: "deliver" }, { headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` } })
             .then(function (response) {
                 // handle success
                 toast.success("Order deliver successfull")
@@ -50,7 +50,7 @@ const ManageOrder = () => {
             })
     }
     const handlePayOrder = (id) => {
-        axios.put(`http://localhost:5000/order/${id}?email=${user.email}`, { operation: "payment" }, { headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` } })
+        axios.put(`https://polar-gorge-51199.herokuapp.com/order/${id}?email=${user.email}`, { operation: "payment" }, { headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` } })
             .then(function (response) {
                 // handle success
                 toast.success("Order payment successfull")
@@ -65,7 +65,7 @@ const ManageOrder = () => {
         return <Loading></Loading>
     }
     return (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto ">
             <table className="table w-full">
                 <thead>
                     <tr>
@@ -81,7 +81,7 @@ const ManageOrder = () => {
                 <tbody>
                     {
                         orders.map(order => <tr key={order._id}>
-                            <th>1</th>
+                            <th>{orders.indexOf(order) + 1}</th>
                             <td>{order.date}</td>
                             <td>{order.email}</td>
                             <td>
@@ -90,7 +90,7 @@ const ManageOrder = () => {
                                 }
                             </td>
                             <td>
-                                <label onClick={() => handleDeliverOrder(order._id)} className="btn btn-sm" disabled={order.status === "delivered"}>Deliver</label>
+                                <label onClick={() => handleDeliverOrder(order._id)} className="btn btn-sm" disabled={order.status === "shifted"}>Deliver</label>
                             </td>
                             <td>
                                 <label onClick={() => handlePayOrder(order._id)} className="btn btn-sm" disabled={order.isPaid}>Pay</label>

@@ -3,10 +3,6 @@ import {
     useQuery
 } from 'react-query';
 const BusinessSummery = () => {
-    // const { data: summery, isLoading, refetch } = useQuery('summery', () => fetch(`http://localhost:5000/summery`)
-    //     .then(async (res) => {
-    //         return res.json();
-    //     }))
     return (
         <section className='mt-[100px] lg:mx-[50px] mx-[20px]'>
             <h2 className='text-5xl text-center text-white'>Business Summery</h2>

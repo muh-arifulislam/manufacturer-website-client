@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 const ManageProducts = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
-    const { data: products, isLoading, refetch } = useQuery('products', () => fetch(`http://localhost:5000/tool`)
+    const { data: products, isLoading, refetch } = useQuery('products', () => fetch(`https://polar-gorge-51199.herokuapp.com/tool`)
         .then(async (res) => {
             if (res.status === 403 || res.status === 401) {
                 localStorage.removeItem('accessToken');
@@ -23,7 +23,7 @@ const ManageProducts = () => {
         }))
     const [selectedProductId, setSelectedProductId] = useState('');
     const handleDeleteProduct = () => {
-        fetch(`http://localhost:5000/tool/${selectedProductId}?email=${user.email}`, {
+        fetch(`https://polar-gorge-51199.herokuapp.com/tool/${selectedProductId}?email=${user.email}`, {
             method: "DELETE",
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

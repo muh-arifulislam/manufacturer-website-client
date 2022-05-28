@@ -29,7 +29,7 @@ const AddProduct = () => {
                         description: data.description,
                         image: img,
                     }
-                    fetch(`http://localhost:5000/tool?email=${user.email}`, {
+                    fetch(`https://polar-gorge-51199.herokuapp.com/tool?email=${user.email}`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <footer className=' lg:p-[70px] p-[36px] bg-neutral'>
-            <div className="footer text-neutral-content justify-between">
+            <div className="footer text-white justify-between">
                 <div>
                     <span className="footer-title">Home</span>
                     <a href='#tools' className="link link-hover">Tools</a>
@@ -23,7 +23,7 @@ const Footer = () => {
                     <span className="footer-title">Legal</span>
                     <p>Cumilla, Chittagong - Bangladesh</p>
                     <p>+880 1306-560-747</p>
-                    <p>admin@manufacturer.com</p>
+                    <p>admin@ztechcorporation.com</p>
                 </div>
             </div>
             <div className='footer footer-center  text-primary-content lg:mt-[100px] mt-[60px]'>

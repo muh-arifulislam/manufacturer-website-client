@@ -9,7 +9,7 @@ import ConfirmModal from './ConfirmModal';
 const axios = require('axios').default;
 const MakeAdmin = () => {
     const [user] = useAuthState(auth);
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch(`http://localhost:5000/user?email=${user.email}`, {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch(`https://polar-gorge-51199.herokuapp.com/user?email=${user.email}`, {
         method: "GET",
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -25,7 +25,7 @@ const MakeAdmin = () => {
         }))
     const [selectedUserId, setSelectedUserId] = useState('');
     const handleMakeAdmin = () => {
-        axios.put(`http://localhost:5000/make-admin/${selectedUserId}`)
+        axios.put(`https://polar-gorge-51199.herokuapp.com/make-admin/${selectedUserId}`)
             .then(function (response) {
                 // handle success
                 console.log(response);
