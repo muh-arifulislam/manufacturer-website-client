@@ -1,11 +1,11 @@
 import React from 'react';
-
+import image from '../../images/manu.jpg';
 const GlobalStandard = () => {
     return (
         <section className='my-[50px]'>
             <div className="hero min-h-screen bg-white">
-                <div className="hero-content flex-col lg:flex-row">
-                    <img src="https://api.lorem.space/image/movie?w=260&h=400" className="max-w-sm rounded-lg shadow-2xl" alt='' />
+                <div className="hero-content flex-col lg:flex-row gap-[30px]">
+                    <img src={image} className="lg:w-full w-[90%] max-w-sm  lg:h-[400px] rounded-lg shadow-2xl" alt='' />
                     <div>
                         <div className='w-full max-w-xl'>
                             <h2 className='text-3xl font-bold'>The Global Leader In the Industry and Manufacturing of Innovative</h2>
