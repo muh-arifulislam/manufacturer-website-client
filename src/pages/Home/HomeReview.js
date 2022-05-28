@@ -1,15 +1,28 @@
 import React from 'react';
-
-const HomeReview = () => {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+const HomeReview = ({ review }) => {
+    const { name, rating, description, image } = review;
+    const ratingNum = parseInt(rating);
+    let ratingIcon = [];
+    for (let i = 0; i < ratingNum; i++) {
+        ratingIcon.push(<FontAwesomeIcon icon={faStar} key={i}></FontAwesomeIcon>)
+    }
     return (
-        <div className="card w-[95%] mx-auto bg-base-100 shadow-xl">
+        <div className="card w-[95%] max-w-xl mx-auto bg-base-100 shadow-xl">
             <div className="card-body">
                 <div className="avatar">
                     <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 mx-auto">
-                        <img src="https://api.lorem.space/image/face?hash=3174" />
+                        <img src={image} />
                     </div>
                 </div>
+                <p><span className='mr-[5px] font-bold'>Rating:</span>
+                    {
+                        ratingIcon
+                    }
+                </p>
                 <p className='text-center'>"We are using cookies for no reason."</p>
+                <p className='font-bold'>{name}</p>
             </div>
         </div>
     );

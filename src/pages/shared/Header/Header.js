@@ -8,7 +8,7 @@ const Header = () => {
     const location = useLocation();
     const path = location.pathname;
     return (
-        <nav id="header" className="navbar bg-base-100 lg:px-20 py-5">
+        <nav id="header" className="navbar bg-neutral text-white lg:px-20 py-5">
             <div className="flex-1">
                 <a className="btn btn-ghost normal-case text-xl" href='/'>daisyUI</a>
             </div>

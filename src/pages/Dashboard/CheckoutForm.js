@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { toast } from 'react-toastify';
 const CheckoutForm = ({ order }) => {
     const stripe = useStripe();
     const elements = useElements();
@@ -54,7 +55,7 @@ const CheckoutForm = ({ order }) => {
         }
         else {
             setCardError('');
-            alert('Congrates! your payment is completed');
+            toast.success("Your Payment has been successful");
             // update order 
             fetch(`http://localhost:5000/update-order/`, {
                 method: "PUT",
@@ -65,7 +66,7 @@ const CheckoutForm = ({ order }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
+
                 })
             // update tools 
             fetch(`http://localhost:5000/update-tool/`, {
@@ -85,7 +86,7 @@ const CheckoutForm = ({ order }) => {
     }
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="mt-[20px]">
                 <CardElement
                     options={{
                         style: {
@@ -102,7 +103,7 @@ const CheckoutForm = ({ order }) => {
                         },
                     }}
                 />
-                <button className='btn btn-primary' type="submit" disabled={!stripe || !clientSecret}>
+                <button className='btn btn-primary mt-[12px]' type="submit" disabled={!stripe || !clientSecret}>
                     Pay
                 </button>
             </form>{

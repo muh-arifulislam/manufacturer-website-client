@@ -1,50 +1,26 @@
 [
     {
-        "_id": 1,
-        "name": "Gigabyte m250",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores",
+        "name": "Ztech Core i3-2120 2nd Gen Processor",
+        "description": "Ztech Core i3-2120 2nd Gen Processor has a Processor Base Frequency of 3.30 GHz and a 3 MB Intel Smart Cache. It has 2 cores and 4 threads. It features 2 memory channels that support DDR3 1066/1333 up to 32 GB. This processor comes equipped with Intel HD Graphics 2000, an advanced video engine that delivers smooth, high-quality HD video playback, and advanced 3D capabilities, providing an ideal graphics solution for everyday computing.i5-10400 Processor comes with Intel UHD Graphics 630 graphics.",
         "minOrder": 100,
-        "quantity": 1500,
-        "price": 150
+        "quantity": 3000,
+        "price": 75,
+        "image": "https://i.ibb.co/8896h49/i3-2120-tray-500x500.jpg"
     },
     {
-        "_id": 2,
-        "name": "Gigabyte m250",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores",
+        "name": "Ztech 10th Gen Core i5-10400 Processor",
+        "description": "This Ztech new 10th gen Comet Lake microarchitecture is manufactured with the 14nm process that comes with six cores but lacks HyperThreading. As this chip is updated to the latest BIOS revision, it nicely fits into any Intel 400-series motherboard. Focusing on this, all the major motherboard manufacturers have already started BIOS updates for their 400-series lineup. These Processors also support 64-bit computing on Intel architecture require an Intel 64 architecture-enabled BIOS.",
         "minOrder": 100,
-        "quantity": 1500,
-        "price": 150
+        "quantity": 3000,
+        "price": 151,
+        "image": "https://i.ibb.co/59JxmDF/i5-10400-bulk-500x500.jpg"
     },
     {
-        "_id": 3,
-        "name": "Gigabyte m250",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores",
+        "name": "Ztech 9 5900X Processor",
+        "description": "Ztech 9 5900X Processor is the World’s Best Gaming Processor which is 12 cores to power through gaming, streaming and more. It will provides the Fastest speed in the Game to get the high-speed gaming performance of the world’s best desktop processor. It is featured with Encode faster, Render faster, Iterate faster and Create more, faster with AMD Ryzen processors.",
         "minOrder": 100,
-        "quantity": 1500,
-        "price": 150
-    },
-    {
-        "_id": 4,
-        "name": "Gigabyte m250",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores",
-        "minOrder": 100,
-        "quantity": 1500,
-        "price": 150
-    },
-    {
-        "_id": 5,
-        "name": "Gigabyte m250",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores",
-        "minOrder": 100,
-        "quantity": 1500,
-        "price": 150
-    },
-    {
-        "_id": 6,
-        "name": "Gigabyte m250",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus animi laboriosam saepe delectus alias dolores",
-        "minOrder": 100,
-        "quantity": 1500,
-        "price": 150
+        "quantity": 3000,
+        "price": 399,
+        "image": "https://i.ibb.co/fnXRTKX/ryzen-9-5900x-bulk-500x500.jpg"
     }
 ]

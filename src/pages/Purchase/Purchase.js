@@ -14,7 +14,7 @@ const Purchase = () => {
     const [user] = useAuthState(auth);
     console.log(user);
     const [tool, setTool] = useState({});
-    const { _id, name, price, quantity, minOrder, description } = tool;
+    const { _id, name, price, quantity, minOrder, description, image } = tool;
     const [orderQuantity, setOrderQuantity] = useState('0');
     const handleOrderChange = (event) => {
         setOrderQuantity(event.target.value);
@@ -107,10 +107,10 @@ const Purchase = () => {
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100 lg:order-2 order-1">
                         <div className="card lg:w-full bg-base-100 shadow-xl">
-                            <figure className="px-10 pt-10"><img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" /></figure>
+                            <figure className="px-10 pt-10 w-[50%] mx-auto"><img src={image} alt="Shoes" /></figure>
                             <div className="card-body">
                                 <h2 className="card-title">{name}</h2>
-                                <p>Price: ${price}</p>
+                                <p className='font-bold'>Price: ${price}</p>
                                 <p>Minimum Order: {minOrder}</p>
                                 <p>Available Quantity: {quantity}</p>
                                 <p><span className='font-bold'>Description:</span> {description}</p>

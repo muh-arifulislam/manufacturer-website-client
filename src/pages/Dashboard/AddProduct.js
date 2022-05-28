@@ -41,7 +41,6 @@ const AddProduct = () => {
                         .then(inserted => {
                             if (inserted.insertedId) {
                                 toast.success('Product added Successfully');
-                                console.log(inserted);
                                 reset();
                             }
                         })
@@ -49,7 +48,7 @@ const AddProduct = () => {
             })
     };
     return (
-        <section className='flex justify-center'>
+        <section className='flex justify-center mt-[20px]'>
             <div className="card flex-shrink-0 w-full lg:max-w-xl max-w-xs shadow-2xl bg-base-100">
                 <div className="card-body">
                     <h2 className="text-3xl font-bold text-center">Add Product</h2>

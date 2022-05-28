@@ -41,9 +41,8 @@ const MyReview = () => {
             return res.json();
         }))
     const handleAddReview = () => {
-        const title = titleRef.current.value;
         const description = descriptionRef.current.value;
-        const data = { name: user?.displayName, email: user?.email, title: title, description: description, rating: rating, image: userData?.image }
+        const data = { name: user?.displayName, email: user?.email, description: description, rating: rating, image: userData?.image }
         fetch('http://localhost:5000/review', {
             method: "POST",
             headers: {
@@ -63,14 +62,14 @@ const MyReview = () => {
         return <Loading></Loading>;
     }
     return (
-        <section>
+        <section className='mt-[20px]'>
             <div className='grid lg:grid-cols-2 grid-cols-1 gap-[30px] gap-[20px] lg:mx-[50px] mx-[10px] justify-items-center	'>
                 {
                     reviews?.map(review => <ReviewCard key={review._id} review={review}></ReviewCard>)
                 }
             </div>
             <div className='flex justify-center'>
-                <label htmlFor="add-review-modal" className="btn modal-button fixed bottom-[20px]">Add Review</label>
+                <label htmlFor="add-review-modal" className="btn modal-button fixed bottom-[20px] btn-primary text-white">Add Review</label>
             </div>
             {/* modal area  */}
             <div>
@@ -80,7 +79,6 @@ const MyReview = () => {
                         <div className='flex flex-col items-center'>
                             <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" value={user?.displayName} readOnly />
                             <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs mt-[12px]" value={user?.email} readOnly />
-                            <input ref={titleRef} type="text" placeholder="Job Title" className="input input-bordered w-full max-w-xs mt-[12px]" />
                             <textarea ref={descriptionRef} className="textarea textarea-bordered w-full max-w-xs mt-[12px]" placeholder="description"></textarea>
                         </div>
                         <div className="flex justify-center mt-[12px]">

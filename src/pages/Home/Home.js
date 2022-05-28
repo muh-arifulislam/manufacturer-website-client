@@ -6,7 +6,7 @@ import Tools from './Tools';
 
 const Home = () => {
     return (
-        <div>
+        <div className='bg-accent'>
             <MyBanner></MyBanner>
             <Tools></Tools>
             <BusinessSummery></BusinessSummery>

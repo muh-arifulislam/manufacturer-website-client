@@ -125,7 +125,7 @@ const MyProfile = () => {
                                 message: 'Image is Required'
                             }
                         })} required />
-                        <input type="submit" className="btn btn-primary btn-sm px-[15px] normal-case mt-[12px]" value="Upload Picture" />
+                        <input type="submit" className="btn btn-primary btn-sm px-[15px] normal-case mt-[12px] text-white" value="Upload Picture" />
                     </form>
                 </div>
             </div>
@@ -194,7 +194,7 @@ const MyProfile = () => {
                 <div className="form-control w-full max-w-xl  mt-[12px]">
                     <div className='flex justify-end gap-[30px]'>
                         <button onClick={() => navigate('/')} className='btn normal-case btn-outline'>Back to Home</button>
-                        <button onClick={handleSubmit} className='btn normal-case btn-primary'>Save Changes</button>
+                        <button onClick={handleSubmit} className='btn normal-case btn-primary text-white'>Save Changes</button>
                     </div>
                 </div>
             </div>

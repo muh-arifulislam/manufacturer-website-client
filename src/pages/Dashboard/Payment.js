@@ -27,21 +27,23 @@ const Payment = () => {
             })
     }, [])
     return (
-        <div className="">
-            <div className="card w-50 max-w-md bg-base-100 shadow-xl my-12">
-                <div className="card-body">
-                    <h2 className="card-title">pay for {name}</h2>
-                    <p>Please pay ${totalPrice}</p>
+        <section className='flex justify-center mt-[20px]'>
+            <div className="">
+                <div className="card w-50 max-w-md bg-base-100 shadow-xl my-12">
+                    <div className="card-body">
+                        <h2 className="card-title">Pay for {name}</h2>
+                        <p className='font-bold'>Please pay ${totalPrice}</p>
+                    </div>
+                </div>
+                <div className="card flex-shrink-0 w-50 max-w-md shadow-2xl bg-base-100">
+                    <div className="card-body">
+                        <Elements stripe={stripePromise}>
+                            <CheckoutForm order={order} />
+                        </Elements>
+                    </div>
                 </div>
             </div>
-            <div className="card flex-shrink-0 w-50 max-w-md shadow-2xl bg-base-100">
-                <div className="card-body">
-                    <Elements stripe={stripePromise}>
-                        <CheckoutForm order={order} />
-                    </Elements>
-                </div>
-            </div>
-        </div>
+        </section>
     );
 };
 
